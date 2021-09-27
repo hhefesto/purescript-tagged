@@ -19,11 +19,7 @@ tagged a = Tagged (Identity a)
 untagged :: forall t a. Tagged t a -> a
 untagged (Tagged (Identity a)) = a
 
-
 derive instance newtypeTagged :: Newtype (Tagged t a) _
--- instance newtypeTagged :: Newtype (Tagged t a) a where
---   wrap = tagged
---   unwrap = untagged
 
 instance showTagged :: Show a => Show (Tagged t a) where
   show x = "(tagged " <> show (untagged x) <> ")"
